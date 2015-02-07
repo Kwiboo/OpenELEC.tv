@@ -30,11 +30,11 @@
   cp -p $SYSTEM_ROOT/usr/share/bootloader/fixup.dat $BOOT_ROOT
   cp -p $SYSTEM_ROOT/usr/share/bootloader/start.elf $BOOT_ROOT
 
-  if [ -f $SYSTEM_ROOT/usr/share/bootloader/*.dtb ]; then
+  if `ls $SYSTEM_ROOT/usr/share/bootloader/*.dtb 1>/dev/null 2>&1`; then
     cp -p $SYSTEM_ROOT/usr/share/bootloader/*.dtb $BOOT_ROOT
   fi
 
-  if [ -f $SYSTEM_ROOT/usr/share/bootloader/overlays/*.dtb ]; then
+  if `ls $SYSTEM_ROOT/usr/share/bootloader/overlays/*.dtb 1>/dev/null 2>&1`; then
     mkdir -p $BOOT_ROOT/overlays
     cp -p $SYSTEM_ROOT/usr/share/bootloader/overlays/*.dtb $BOOT_ROOT/overlays
   fi
