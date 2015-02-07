@@ -39,6 +39,9 @@ if [ "$MEDIACENTER" = "plexht" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET Imaging"
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET simplejson"
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET pycrypto"
+
+# other packages
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET PlexELEC-settings"
 fi
 
 for i in $SKINS; do
