@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="plexht"
-PKG_VERSION="v1.3.6.441-309e72d1"
+PKG_VERSION="v1.3.5.431-7966a4df"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
