@@ -1,31 +1,35 @@
-From 08fd49d51c0733e8033f85fc527758ec5d76315a Mon Sep 17 00:00:00 2001
+From 0f259cbb1a8d5b52e9e1126e8cb20b1d6e6cebb2 Mon Sep 17 00:00:00 2001
 From: Tobias Hieta <tobias@hieta.se>
-Date: Tue, 23 Dec 2014 15:12:11 +0100
-Subject: [PATCH 01/40] Added 1.3.5 release notes.
+Date: Tue, 3 Feb 2015 21:53:16 +0100
+Subject: [PATCH 01/40] Update Release Notes.
 
 ---
- plex/ReleaseNotes/1.3.5.txt | 5 +++++
- 1 file changed, 5 insertions(+)
- create mode 100644 plex/ReleaseNotes/1.3.5.txt
+ plex/ReleaseNotes/1.3.6.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/plex/ReleaseNotes/1.3.5.txt b/plex/ReleaseNotes/1.3.5.txt
-new file mode 100644
-index 0000000..b585861
---- /dev/null
-+++ b/plex/ReleaseNotes/1.3.5.txt
-@@ -0,0 +1,5 @@
-+Fixes:
-+  - Fix playlist playback ordering.
-+  - Fix a edge case where bestServer would not match the correct server.
-+  - Increase timeout for pre-play loading, since we check the files on
-+    disk it might cause the disks to spin up and we need to increase it.
+diff --git a/plex/ReleaseNotes/1.3.6.txt b/plex/ReleaseNotes/1.3.6.txt
+index d48e936..2dd5eb9 100644
+--- a/plex/ReleaseNotes/1.3.6.txt
++++ b/plex/ReleaseNotes/1.3.6.txt
+@@ -20,6 +20,10 @@ FIXES:
+   - Fixed Playlist editing mode.
+   - Fixed jump-to-letter when you have loaded a subview or a pre-play
+   - Correct watched / unwatched icons shown in pre-play
++  - Image cache improved, it will now reload bad cached images and will be more careful about
++    adding broken images to the cache.
++  - Fix certificate errors with cloud sync sections
++  - Remove keybindings for taking screenshots since this feature has been broken a long time.
+   - Use better LIRC default path (thanks to Maxime Gauduin)
+   - Fixed a token corruption that could lead to client slowdown (Thanks to Steven Hartland)
+   - Fanouts and other timers should now work better with OpenELEC / Linux (Thanks to Dale Hamel)
+\ No newline at end of file
 -- 
 1.9.5.msysgit.0
 
 
-From d18db700609ceeebb26fd62ee78d95ddbdd778a7 Mon Sep 17 00:00:00 2001
+From ca7c7a73f1f8f5e79085afdf26bffa1c9e54c416 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:11:13 +0100
+Date: Thu, 5 Feb 2015 12:17:37 +0100
 Subject: [PATCH 02/40] Add rapidxml to global includes
 
 ---
@@ -33,7 +37,7 @@ Subject: [PATCH 02/40] Add rapidxml to global includes
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 108d85b..f2e6977 100644
+index 0693173..737ae6b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -113,7 +113,7 @@ include_directories(
@@ -49,9 +53,9 @@ index 108d85b..f2e6977 100644
 1.9.5.msysgit.0
 
 
-From 745d6a46f10e6ba47976d412a4988a9b10e340f4 Mon Sep 17 00:00:00 2001
+From b984c56aa2fcf4f9bcf1568746edde98984beb85 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:12:13 +0100
+Date: Thu, 5 Feb 2015 12:19:03 +0100
 Subject: [PATCH 03/40] Fix FindPython.cmake on r-pi
 
 ---
@@ -127,9 +131,9 @@ index 3618034..ffb1e82 100644
 1.9.5.msysgit.0
 
 
-From 5e970c47947dd5c9a0a1e20435aa3ab315bfc8be Mon Sep 17 00:00:00 2001
+From 8ceb054decd4f4495a03d74c112d3d3119501a08 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:13:11 +0100
+Date: Thu, 5 Feb 2015 16:56:32 +0100
 Subject: [PATCH 04/40] Compile fastmemcpy-arm.S
 
 ---
@@ -138,10 +142,10 @@ Subject: [PATCH 04/40] Compile fastmemcpy-arm.S
  2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/xbmc/CMakeLists.txt b/xbmc/CMakeLists.txt
-index 538d62b..edc16f9 100644
+index 6eb2dbd..076965b 100644
 --- a/xbmc/CMakeLists.txt
 +++ b/xbmc/CMakeLists.txt
-@@ -39,6 +39,10 @@ set(SRCS ${xbmc_SRCS} ${ALL_SRCS})
+@@ -43,6 +43,10 @@ set(SRCS ${xbmc_SRCS} ${ALL_SRCS})
  ADD_MSVC_PRECOMPILED_HEADER("pch.h" "win32/pch.cpp" SRCS)
  #ADD_MSVC_PRECOMPILED_HEADER("${root}/xbmc/win32/pch.h" "${root}/xbmc/win32/pch.cpp" ALL_SRCS)
  
@@ -169,9 +173,9 @@ index 4aa1433..2b40b76 100644
 1.9.5.msysgit.0
 
 
-From 107b55abba80336cc24eac3891732bc40b58e667 Mon Sep 17 00:00:00 2001
+From fd4fdd49ce431d4171ae58e770b8a3b7767e68b0 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:13:38 +0100
+Date: Thu, 5 Feb 2015 16:57:56 +0100
 Subject: [PATCH 05/40] Compile yuv2rgb.neon.S
 
 ---
@@ -179,10 +183,10 @@ Subject: [PATCH 05/40] Compile yuv2rgb.neon.S
  1 file changed, 2 insertions(+)
 
 diff --git a/xbmc/CMakeLists.txt b/xbmc/CMakeLists.txt
-index edc16f9..3ed1b2e 100644
+index 076965b..5836500 100644
 --- a/xbmc/CMakeLists.txt
 +++ b/xbmc/CMakeLists.txt
-@@ -40,7 +40,9 @@ ADD_MSVC_PRECOMPILED_HEADER("pch.h" "win32/pch.cpp" SRCS)
+@@ -44,7 +44,9 @@ ADD_MSVC_PRECOMPILED_HEADER("pch.h" "win32/pch.cpp" SRCS)
  #ADD_MSVC_PRECOMPILED_HEADER("${root}/xbmc/win32/pch.h" "${root}/xbmc/win32/pch.cpp" ALL_SRCS)
  
  enable_language(ASM)
@@ -196,7 +200,7 @@ index edc16f9..3ed1b2e 100644
 1.9.5.msysgit.0
 
 
-From 583ed596ee35f3b82edd5f8e61ee709124a84b46 Mon Sep 17 00:00:00 2001
+From 75356cc673c1a8e7292a065387274c6370eb3ce1 Mon Sep 17 00:00:00 2001
 From: Sam Nazarko <samnazarko@stmteam.com>
 Date: Wed, 23 Oct 2013 01:27:56 +0100
 Subject: [PATCH 06/40] build frodo with libshairplay if available
@@ -517,9 +521,9 @@ index 39402a7..e1a567e 100644
 1.9.5.msysgit.0
 
 
-From 28898ab41b019de2abcfb781480942950044ff54 Mon Sep 17 00:00:00 2001
+From 7bd47a63bc370f5073b512d8fcf2d852231f845a Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:15:26 +0100
+Date: Thu, 5 Feb 2015 13:18:24 +0100
 Subject: [PATCH 07/40] Use libshairplay instead of libshareport
 
 ---
@@ -539,10 +543,10 @@ Subject: [PATCH 07/40] Use libshairplay instead of libshareport
  delete mode 100644 plex/CMakeModules/FindShairPort.cmake
 
 diff --git a/plex/CMakeModules/CMakeConfig.cmake b/plex/CMakeModules/CMakeConfig.cmake
-index 22938e2..0813187 100644
+index 791b621..0b4671d 100644
 --- a/plex/CMakeModules/CMakeConfig.cmake
 +++ b/plex/CMakeModules/CMakeConfig.cmake
-@@ -97,7 +97,7 @@ include(CheckFFmpegIncludes)
+@@ -102,7 +102,7 @@ include(CheckFFmpegIncludes)
  if(NOT TARGET_RPI)
    include(CheckCrystalHDInclude)
  endif()
@@ -662,7 +666,7 @@ index 4d96d5e..0000000
 -  plex_get_soname(SHAIRPORT_SONAME ${SHAIRPORT_LIBRARY})
 -ENDIF()
 diff --git a/plex/CMakeModules/PlatformConfigLINUX.cmake b/plex/CMakeModules/PlatformConfigLINUX.cmake
-index 7534d7a..3fb9740 100644
+index bd8852d..a47a3f9 100644
 --- a/plex/CMakeModules/PlatformConfigLINUX.cmake
 +++ b/plex/CMakeModules/PlatformConfigLINUX.cmake
 @@ -71,7 +71,7 @@ set(INSTALL_LIB
@@ -675,7 +679,7 @@ index 7534d7a..3fb9740 100644
    VDPAU
  )
 diff --git a/plex/CMakeModules/PlatformConfigOSX.cmake b/plex/CMakeModules/PlatformConfigOSX.cmake
-index c82c2c4..f86b70e 100644
+index c82c2c4..303fc95 100644
 --- a/plex/CMakeModules/PlatformConfigOSX.cmake
 +++ b/plex/CMakeModules/PlatformConfigOSX.cmake
 @@ -115,7 +115,7 @@ endif()
@@ -688,7 +692,7 @@ index c82c2c4..f86b70e 100644
    FLAC
    modplug
 diff --git a/plex/CMakeModules/PlatformConfigRPI.cmake b/plex/CMakeModules/PlatformConfigRPI.cmake
-index 82aa751..f296922 100644
+index 367cdc9..c1c516a 100644
 --- a/plex/CMakeModules/PlatformConfigRPI.cmake
 +++ b/plex/CMakeModules/PlatformConfigRPI.cmake
 @@ -72,7 +72,7 @@ set(INSTALL_LIB
@@ -701,7 +705,7 @@ index 82aa751..f296922 100644
  )
  
 diff --git a/plex/config.h.in b/plex/config.h.in
-index cf65385..b21a724 100644
+index 9a02e28..07b0353 100644
 --- a/plex/config.h.in
 +++ b/plex/config.h.in
 @@ -156,7 +156,7 @@
@@ -715,7 +719,7 @@ index cf65385..b21a724 100644
  #cmakedefine HAVE_LIBTIFF @HAVE_LIBTIFF@
 @@ -175,8 +175,8 @@
  #cmakedefine HAVE_PTHREAD_SETNAME_NP @HAVE_PTHREAD_SETNAME_NP@
- #cmakedefine HAVE_PTHREAD_CONDATTR_SETCLOCK @HAVE_PTHREAD_CONDATTR_SETCLOCK@
+ #cmakedefine HAVE_PTHREAD_SET_NAME_NP @HAVE_PTHREAD_SET_NAME_NP@
  
 -/* LIBSHAIRPORT */
 -#cmakedefine HAVE_STRUCT_AUDIOOUTPUT_AO_SET_METADATA @HAVE_STRUCT_AUDIOOUTPUT_AO_SET_METADATA@
@@ -728,9 +732,9 @@ index cf65385..b21a724 100644
 1.9.5.msysgit.0
 
 
-From 04c637fb61eda3b53153a8e8c3dc0942ad9abe18 Mon Sep 17 00:00:00 2001
+From e40f7c1caa61ecbe81c32054263e1b15363518a0 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:18:17 +0100
+Date: Thu, 5 Feb 2015 22:09:04 +0100
 Subject: [PATCH 08/40] Use dbus on r-pi
 
 ---
@@ -739,7 +743,7 @@ Subject: [PATCH 08/40] Use dbus on r-pi
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/plex/CMakeModules/PlatformConfigRPI.cmake b/plex/CMakeModules/PlatformConfigRPI.cmake
-index f296922..0d6199e 100644
+index c1c516a..e05c403 100644
 --- a/plex/CMakeModules/PlatformConfigRPI.cmake
 +++ b/plex/CMakeModules/PlatformConfigRPI.cmake
 @@ -23,6 +23,7 @@ set(LINK_PKG
@@ -759,7 +763,7 @@ index f296922..0d6199e 100644
      -DOMX_SKIP64BIT
      -DHAS_BUILTIN_SYNC_ADD_AND_FETCH
 diff --git a/plex/config.h.in b/plex/config.h.in
-index b21a724..8937ee2 100644
+index 07b0353..7989ae1 100644
 --- a/plex/config.h.in
 +++ b/plex/config.h.in
 @@ -155,7 +155,7 @@
@@ -775,9 +779,9 @@ index b21a724..8937ee2 100644
 1.9.5.msysgit.0
 
 
-From e3a8cef782c20e166b3442fdcf29bc1a2a1cc7ce Mon Sep 17 00:00:00 2001
+From a0c70818a890f2cb720ecee2af6dad8dac16bcbc Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:19:05 +0100
+Date: Thu, 5 Feb 2015 22:10:05 +0100
 Subject: [PATCH 09/40] Enable pythonoptimize
 
 ---
@@ -806,7 +810,7 @@ index ef272b3..6f7add4 100644
 1.9.5.msysgit.0
 
 
-From 25ab59b0a4d5b2ac7cd3dd57df0e38f46bdc2734 Mon Sep 17 00:00:00 2001
+From bd1bf8c0e276ee9b36903ca831a5b9fd6d4a079e Mon Sep 17 00:00:00 2001
 From: Lars Op den Kamp <lars@opdenkamp.eu>
 Date: Tue, 28 Oct 2014 14:52:16 +0100
 Subject: [PATCH 10/40] [CEC] renamed the iDoubleTapTimeoutMs in the new libCEC
@@ -839,7 +843,7 @@ index 056a77e..23c56c4 100644
 1.9.5.msysgit.0
 
 
-From 764726a2a9ccdebe6977263bfaf769ea272ef69a Mon Sep 17 00:00:00 2001
+From b7af286c5e05ac4c0747eb3134d8de19dc4fc07c Mon Sep 17 00:00:00 2001
 From: popcornmix <popcornmix@gmail.com>
 Date: Mon, 22 Jul 2013 21:05:25 +0100
 Subject: [PATCH 11/40] Fix the non-trivial dirty rectangle modes
@@ -941,7 +945,7 @@ index 4a0f2bb..481a2a5 100644
 1.9.5.msysgit.0
 
 
-From 100551f3b1ce7f883576f7a67eece4d74918ead6 Mon Sep 17 00:00:00 2001
+From f6f558517a7b675a8cd05979c05627039747338e Mon Sep 17 00:00:00 2001
 From: xbmc <fernetmenta@online.de>
 Date: Thu, 28 Mar 2013 20:50:59 +0100
 Subject: [PATCH 12/40] fix incorrect display of fps when dr kicks in
@@ -951,10 +955,10 @@ Subject: [PATCH 12/40] fix incorrect display of fps when dr kicks in
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/xbmc/Application.cpp b/xbmc/Application.cpp
-index a58d5e5..a911b6d 100755
+index db3bfba..975f846 100755
 --- a/xbmc/Application.cpp
 +++ b/xbmc/Application.cpp
-@@ -2613,10 +2613,11 @@ void CApplication::Render()
+@@ -2611,10 +2611,11 @@ void CApplication::Render()
      if (frameTime < singleFrameTime)
        Sleep(singleFrameTime - frameTime);
    }
@@ -971,9 +975,9 @@ index a58d5e5..a911b6d 100755
 1.9.5.msysgit.0
 
 
-From 85e70e38fb30e05115e2797f5f66496fd4618262 Mon Sep 17 00:00:00 2001
+From 3db01cfc4e9e7856a44f02cbbe1c7630f31bb304 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:22:34 +0100
+Date: Thu, 5 Feb 2015 22:33:58 +0100
 Subject: [PATCH 13/40] Change wait time to 100ms
 
 ---
@@ -985,7 +989,7 @@ Subject: [PATCH 13/40] Change wait time to 100ms
  5 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/plex/GUI/GUIPlexMediaWindow.cpp b/plex/GUI/GUIPlexMediaWindow.cpp
-index 1b8454f..44ba4ca 100755
+index 7134bc9..fcea18e 100755
 --- a/plex/GUI/GUIPlexMediaWindow.cpp
 +++ b/plex/GUI/GUIPlexMediaWindow.cpp
 @@ -375,7 +375,7 @@ void CGUIPlexMediaWindow::OnFilterButton(int filterButtonId)
@@ -1053,9 +1057,9 @@ index aa8ae75..c703986 100644
 1.9.5.msysgit.0
 
 
-From 7b095fa0e13949408e0458995fa84b26c5bdb4bc Mon Sep 17 00:00:00 2001
+From bbb5107a385f00521ee19454909049313e863fb9 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 10:42:18 +0100
+Date: Thu, 5 Feb 2015 22:38:14 +0100
 Subject: [PATCH 14/40] Revert part of 23cb50e1 Core rendering changes for
  Raspberry Pi
 
@@ -1119,9 +1123,9 @@ index a48e470..9af2123 100644
 1.9.5.msysgit.0
 
 
-From f8c2ee0f84adaa8410f7dc5590f87af589d0e841 Mon Sep 17 00:00:00 2001
+From 11a19486832e7061327238ef5f786c19f6371947 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:15:44 +0100
+Date: Thu, 5 Feb 2015 22:39:28 +0100
 Subject: [PATCH 15/40] Revert plex render rgb code
 
 ---
@@ -1746,9 +1750,9 @@ index cb3c95f..2ab5684 100644
 1.9.5.msysgit.0
 
 
-From f3d1255074a89370b7bb63bed40081f64e8bdd10 Mon Sep 17 00:00:00 2001
+From e8421ab236993ec6d340e97cd9130417597d4bfb Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:16:14 +0100
+Date: Thu, 5 Feb 2015 22:40:16 +0100
 Subject: [PATCH 16/40] Revert plex omx code
 
 ---
@@ -1808,9 +1812,9 @@ index f1cb1cb..2ed4a4b 100644
 1.9.5.msysgit.0
 
 
-From f094e20bb5518cda8a92c3055ffa7750e72f230f Mon Sep 17 00:00:00 2001
+From f448c65906977033754f4056900f8cec79294cad Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:18:05 +0100
+Date: Thu, 5 Feb 2015 13:20:05 +0100
 Subject: [PATCH 17/40] Sync with frodo_rbp_backports
 
 ---
@@ -1886,10 +1890,10 @@ Subject: [PATCH 17/40] Sync with frodo_rbp_backports
  create mode 100644 xbmc/guilib/TexturePi.h
 
 diff --git a/xbmc/Application.cpp b/xbmc/Application.cpp
-index a911b6d..f8535de 100755
+index 975f846..6d80da8 100755
 --- a/xbmc/Application.cpp
 +++ b/xbmc/Application.cpp
-@@ -1828,8 +1828,8 @@ bool CApplication::StartAirplayServer()
+@@ -1826,8 +1826,8 @@ bool CApplication::StartAirplayServer()
        {
          txt.push_back(std::make_pair("deviceid", "FF:FF:FF:FF:FF:F2"));
        }
@@ -1901,7 +1905,7 @@ index a911b6d..f8535de 100755
        CZeroconf::GetInstance()->PublishService("servers.airplay", "_airplay._tcp", g_infoManager.GetLabel(SYSTEM_FRIENDLY_NAME), listenPort, txt);
        ret = true;
 diff --git a/xbmc/FileItem.cpp b/xbmc/FileItem.cpp
-index 18cf2b1..193eb59 100755
+index 3265a9d..6a1a063 100755
 --- a/xbmc/FileItem.cpp
 +++ b/xbmc/FileItem.cpp
 @@ -754,45 +754,58 @@ void CFileItem::Serialize(CVariant& value) const
@@ -1986,7 +1990,7 @@ index 18cf2b1..193eb59 100755
  }
  
  bool CFileItem::Exists(bool bUseCache /* = true */) const
-@@ -2027,11 +2040,13 @@ void CFileItemList::Sort(SortDescription sortDescription)
+@@ -2036,11 +2049,13 @@ void CFileItemList::Sort(SortDescription sortDescription)
    if (m_sortIgnoreFolders)
      sortDescription.sortAttributes = (SortAttribute)((int)sortDescription.sortAttributes | SortAttributeIgnoreFolders);
  
@@ -2002,7 +2006,7 @@ index 18cf2b1..193eb59 100755
    }
  
    // do the sorting
-@@ -2042,9 +2057,9 @@ void CFileItemList::Sort(SortDescription sortDescription)
+@@ -2051,9 +2066,9 @@ void CFileItemList::Sort(SortDescription sortDescription)
    sortedFileItems.reserve(Size());
    for (SortItems::const_iterator it = sortItems.begin(); it != sortItems.end(); it++)
    {
@@ -2015,7 +2019,7 @@ index 18cf2b1..193eb59 100755
      sortedFileItems.push_back(item);
    }
 diff --git a/xbmc/FileItem.h b/xbmc/FileItem.h
-index 8b75516..99a2226 100644
+index 6d90b6d..e2742d0 100644
 --- a/xbmc/FileItem.h
 +++ b/xbmc/FileItem.h
 @@ -112,7 +112,8 @@ public:
@@ -16031,7 +16035,7 @@ index 79dff7d..cdcbc00 100644
  
  void CRenderSystemGLES::SetScissors(const CRect &rect)
 diff --git a/xbmc/settings/AdvancedSettings.cpp b/xbmc/settings/AdvancedSettings.cpp
-index 3a55a93..ebd99ee 100644
+index 3a55a93..b373727 100644
 --- a/xbmc/settings/AdvancedSettings.cpp
 +++ b/xbmc/settings/AdvancedSettings.cpp
 @@ -985,8 +985,9 @@ void CAdvancedSettings::ParseSettingsFile(const CStdString &file)
@@ -16489,9 +16493,9 @@ index fae528c..aec1ff3 100644
 1.9.5.msysgit.0
 
 
-From ee62ade259a761ee8f933be6b65c9705dc8015b5 Mon Sep 17 00:00:00 2001
+From d0aab10bdd43ec847ae8072674713beb00a06fe4 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:23:14 +0100
+Date: Thu, 5 Feb 2015 22:59:13 +0100
 Subject: [PATCH 18/40] Use omximage for jpeg textures
 
 ---
@@ -16500,7 +16504,7 @@ Subject: [PATCH 18/40] Use omximage for jpeg textures
  2 files changed, 18 insertions(+), 2 deletions(-)
 
 diff --git a/plex/Utility/PlexJobs.cpp b/plex/Utility/PlexJobs.cpp
-index 7ffaebe..e745f82 100644
+index d646237..eff73f8 100644
 --- a/plex/Utility/PlexJobs.cpp
 +++ b/plex/Utility/PlexJobs.cpp
 @@ -19,6 +19,9 @@
@@ -16511,9 +16515,9 @@ index 7ffaebe..e745f82 100644
 +#include "cores/omxplayer/OMXImage.h"
 +#endif
  
- ////////////////////////////////////////////////////////////////////////////////
- bool CPlexHTTPFetchJob::DoWork()
-@@ -233,6 +236,19 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
+ #define TEXTURE_CACHE_BUFFER_SIZE 131072
+ 
+@@ -235,6 +238,19 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
    else if (m_details.hash == m_oldHash)
      return true;
  
@@ -16530,9 +16534,9 @@ index 7ffaebe..e745f82 100644
 +  }
 +#endif
 +
-   int bytesRead, bufferSize = 131072;
-   unsigned char buffer[131072];
+   unsigned char buffer[TEXTURE_CACHE_BUFFER_SIZE];
    bool outputFileOpenned = false;
+ 
 diff --git a/xbmc/cores/omxplayer/OMXImage.cpp b/xbmc/cores/omxplayer/OMXImage.cpp
 index 44d08af..e6d1c50 100644
 --- a/xbmc/cores/omxplayer/OMXImage.cpp
@@ -16559,9 +16563,9 @@ index 44d08af..e6d1c50 100644
 1.9.5.msysgit.0
 
 
-From d3c4ed8658c6390c054a7156413d227b87d980c5 Mon Sep 17 00:00:00 2001
+From e26182f5241e431b2fa7c5b4a48a15529063b5f1 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:28:02 +0100
+Date: Thu, 5 Feb 2015 23:08:11 +0100
 Subject: [PATCH 19/40] Run blocking jobs in high priority
 
 ---
@@ -16585,7 +16589,7 @@ index 0d573c1..3e4ba75 100644
 1.9.5.msysgit.0
 
 
-From f3659a2082384bbd3c61691157b2ff8f195aa0a8 Mon Sep 17 00:00:00 2001
+From e58325fa994effdd0e8163caceaf09d0725e1b86 Mon Sep 17 00:00:00 2001
 From: Karlson2k <k2k@narod.ru>
 Date: Sun, 18 Aug 2013 00:40:37 +0400
 Subject: [PATCH 20/40] CurlFile: don't set 'keep-alive' as cURL do this
@@ -16596,7 +16600,7 @@ Subject: [PATCH 20/40] CurlFile: don't set 'keep-alive' as cURL do this
  1 file changed, 2 deletions(-)
 
 diff --git a/xbmc/filesystem/CurlFile.cpp b/xbmc/filesystem/CurlFile.cpp
-index 348efc4..799bd79 100644
+index d91d269..5af70f9 100644
 --- a/xbmc/filesystem/CurlFile.cpp
 +++ b/xbmc/filesystem/CurlFile.cpp
 @@ -586,8 +586,6 @@ void CCurlFile::SetCommonOptions(CReadState* state)
@@ -16612,7 +16616,7 @@ index 348efc4..799bd79 100644
 1.9.5.msysgit.0
 
 
-From e6625a1981a5df38fc5c97baa95428807aeda445 Mon Sep 17 00:00:00 2001
+From 478b03a1751e84d9479eac4eadcf512f04ecbf59 Mon Sep 17 00:00:00 2001
 From: Karlson2k <k2k@narod.ru>
 Date: Sun, 18 Aug 2013 16:55:52 +0400
 Subject: [PATCH 21/40] CurlFile: request UTF-8 as preferable charset
@@ -16623,7 +16627,7 @@ Subject: [PATCH 21/40] CurlFile: request UTF-8 as preferable charset
  2 files changed, 8 insertions(+)
 
 diff --git a/xbmc/filesystem/CurlFile.cpp b/xbmc/filesystem/CurlFile.cpp
-index 799bd79..093afe9 100644
+index 5af70f9..76b9776 100644
 --- a/xbmc/filesystem/CurlFile.cpp
 +++ b/xbmc/filesystem/CurlFile.cpp
 @@ -385,6 +385,7 @@ CCurlFile::CCurlFile()
@@ -16654,7 +16658,7 @@ index 799bd79..093afe9 100644
            SetRequestHeader(name, value);
        }
 diff --git a/xbmc/filesystem/CurlFile.h b/xbmc/filesystem/CurlFile.h
-index 31522fa..e70b637 100644
+index 3439b4d..ecc2068 100644
 --- a/xbmc/filesystem/CurlFile.h
 +++ b/xbmc/filesystem/CurlFile.h
 @@ -69,6 +69,7 @@ namespace XFILE
@@ -16677,7 +16681,7 @@ index 31522fa..e70b637 100644
 1.9.5.msysgit.0
 
 
-From 7cd791154bb55eda14d88441c76e4f23c1f6b9f5 Mon Sep 17 00:00:00 2001
+From 3cd1a5cfd09960f9eb8fa6ee3b1f54cce24519f6 Mon Sep 17 00:00:00 2001
 From: popcornmix <popcornmix@gmail.com>
 Date: Sun, 9 Nov 2014 13:53:34 +0000
 Subject: [PATCH 22/40] Avoid busy spinning when socket timeout is too low
@@ -16705,7 +16709,7 @@ Now stream plays for a long time without stuttering and FileCache thread remains
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/xbmc/filesystem/CurlFile.cpp b/xbmc/filesystem/CurlFile.cpp
-index 093afe9..c67ce00 100644
+index 76b9776..debbba3 100644
 --- a/xbmc/filesystem/CurlFile.cpp
 +++ b/xbmc/filesystem/CurlFile.cpp
 @@ -1496,7 +1496,7 @@ bool CCurlFile::CReadState::FillBuffer(unsigned int want)
@@ -16721,7 +16725,7 @@ index 093afe9..c67ce00 100644
 1.9.5.msysgit.0
 
 
-From 61209314f2a3ce2adf6e51c91846eafa955ae3fc Mon Sep 17 00:00:00 2001
+From b4f9e7b8f89eb456a21e55a207ed687da9e3312a Mon Sep 17 00:00:00 2001
 From: davilla <davilla@4pi.com>
 Date: Wed, 27 Feb 2013 11:08:45 -0500
 Subject: [PATCH 23/40] fix compiler warning
@@ -16747,7 +16751,7 @@ index f2532d1..1ea4fac 100644
 1.9.5.msysgit.0
 
 
-From 83cd15add2eec6a645c56460448324da7fbb6791 Mon Sep 17 00:00:00 2001
+From 131fa4d9c19e72f5a7c6f1f2a9be98b6bd7bb848 Mon Sep 17 00:00:00 2001
 From: davilla <davilla@4pi.com>
 Date: Wed, 27 Feb 2013 11:10:16 -0500
 Subject: [PATCH 24/40] fixed, m_iVSyncMode var in two places with different
@@ -16802,7 +16806,7 @@ index aec1ff3..beacf3e 100644
 1.9.5.msysgit.0
 
 
-From b403836f876285ba901d48f17e98615239bca102 Mon Sep 17 00:00:00 2001
+From d07c079e685b02ad49957c676450e3ccfcb03b82 Mon Sep 17 00:00:00 2001
 From: Lars Op den Kamp <lars@opdenkamp.eu>
 Date: Mon, 11 Mar 2013 00:55:45 +0100
 Subject: [PATCH 25/40] removed dupe methods. if we really need that Sleep(),
@@ -16908,7 +16912,7 @@ index c681e60..c3a7ad1 100644
 1.9.5.msysgit.0
 
 
-From f9ce65d315b2ce9c595f58519c7644e42b85b561 Mon Sep 17 00:00:00 2001
+From b1d3da8a0996a3e929d465c1fed1aadbf57a7a4a Mon Sep 17 00:00:00 2001
 From: Lars Op den Kamp <lars@opdenkamp.eu>
 Date: Mon, 11 Mar 2013 00:57:40 +0100
 Subject: [PATCH 26/40] removed no longer used TranslateComPort()
@@ -16959,7 +16963,7 @@ index c3a7ad1..87f543b 100644
 1.9.5.msysgit.0
 
 
-From 8351421039e7c00d2ee1da87a37a988c22b7c86d Mon Sep 17 00:00:00 2001
+From a7ed3e68d0fca8d42698f2a90578f1083d0251ce Mon Sep 17 00:00:00 2001
 From: Lars Op den Kamp <lars@opdenkamp.eu>
 Date: Mon, 11 Mar 2013 01:03:13 +0100
 Subject: [PATCH 27/40] cosmetics. made some methods private that don't need to
@@ -17140,7 +17144,7 @@ index 87f543b..6848f61 100644
 1.9.5.msysgit.0
 
 
-From 2ba18db6b09a346559bea1327c1c619548ed4506 Mon Sep 17 00:00:00 2001
+From 06af263dbfdf3ece2db3ea3a5085c313a2df6548 Mon Sep 17 00:00:00 2001
 From: Lars Op den Kamp <lars@opdenkamp.eu>
 Date: Tue, 12 Mar 2013 13:50:54 +0100
 Subject: [PATCH 28/40] fixed compilation without libcec-dev on the system
@@ -17174,9 +17178,9 @@ index 6848f61..29852e5 100644
 1.9.5.msysgit.0
 
 
-From ac63512c5fbbe49f34d1275b50d375d4f7b2d8a1 Mon Sep 17 00:00:00 2001
+From 4a50a66c917e787c4b613580c38de3551e914ce4 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:32:23 +0100
+Date: Thu, 5 Feb 2015 23:54:32 +0100
 Subject: [PATCH 29/40] Update lib
 
 ---
@@ -17493,9 +17497,9 @@ index 452b792..068cb3c 100644
 1.9.5.msysgit.0
 
 
-From c6155f9cd75f05887b6638d3a3324628cb569a8c Mon Sep 17 00:00:00 2001
+From 37db9be40ed75f02be26e18f02bdda08137f4aa3 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 11:58:46 +0100
+Date: Thu, 5 Feb 2015 23:57:06 +0100
 Subject: [PATCH 30/40] Update threads
 
 ---
@@ -17504,12 +17508,10 @@ Subject: [PATCH 30/40] Update threads
  xbmc/threads/LockFree.cpp                     |  2 ++
  xbmc/threads/Lockables.h                      | 27 +++++++++++++++++++--------
  xbmc/threads/SharedSection.h                  |  2 +-
- xbmc/threads/SystemClock.cpp                  |  4 ++++
  xbmc/threads/Thread.cpp                       |  5 +++--
- xbmc/threads/platform/pthreads/Condition.h    | 21 +++++++++------------
+ xbmc/threads/platform/pthreads/Condition.h    | 12 +++++++++---
  xbmc/threads/platform/pthreads/ThreadImpl.cpp |  6 ++++++
- xbmc/utils/TimeUtils.cpp                      |  4 ++++
- 10 files changed, 61 insertions(+), 27 deletions(-)
+ 8 files changed, 53 insertions(+), 18 deletions(-)
 
 diff --git a/xbmc/threads/Event.cpp b/xbmc/threads/Event.cpp
 index 50592d8..9ea5598 100644
@@ -17636,22 +17638,6 @@ index 47eb77d..66b433f 100644
    inline bool try_lock() { return (sec.try_lock() ? ((sharedCount == 0) ? true : (sec.unlock(), false)) : false); }
    inline void unlock() { sec.unlock(); }
  
-diff --git a/xbmc/threads/SystemClock.cpp b/xbmc/threads/SystemClock.cpp
-index 172fb50..7e4e5f7 100644
---- a/xbmc/threads/SystemClock.cpp
-+++ b/xbmc/threads/SystemClock.cpp
-@@ -42,7 +42,11 @@ namespace XbmcThreads
-     now_time = (uint64_t)timeGetTime();
- #else
-     struct timespec ts = {};
-+#ifdef CLOCK_MONOTONIC_RAW
-+    clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
-+#else
-     clock_gettime(CLOCK_MONOTONIC, &ts);
-+#endif // CLOCK_MONOTONIC_RAW
-     now_time = (ts.tv_sec * 1000) + (ts.tv_nsec / 1000000);
- #endif
-     if (!start_time_set)
 diff --git a/xbmc/threads/Thread.cpp b/xbmc/threads/Thread.cpp
 index 91eb023..f296ac2 100644
 --- a/xbmc/threads/Thread.cpp
@@ -17680,27 +17666,10 @@ index 91eb023..f296ac2 100644
    return 0;
  }
 diff --git a/xbmc/threads/platform/pthreads/Condition.h b/xbmc/threads/platform/pthreads/Condition.h
-index 161881b..6621ceb 100644
+index 3fe08d7..0641133 100644
 --- a/xbmc/threads/platform/pthreads/Condition.h
 +++ b/xbmc/threads/platform/pthreads/Condition.h
-@@ -47,16 +47,7 @@ namespace XbmcThreads
-   public:
-     inline ConditionVariable() 
-     {
--      /* PLEX */
--#ifdef HAVE_PTHREAD_CONDATTR_SETCLOCK
--      pthread_condattr_t attr;
--      pthread_condattr_init(&attr);
--      pthread_condattr_setclock(&attr, CLOCK_MONOTONIC);
--      pthread_cond_init(&cond, &attr);
--#else
--      /* END PLEX */
-       pthread_cond_init(&cond,NULL);
--#endif
-     }
- 
-     inline ~ConditionVariable() 
-@@ -65,8 +56,11 @@ namespace XbmcThreads
+@@ -56,8 +56,11 @@ namespace XbmcThreads
      }
  
      inline void wait(CCriticalSection& lock) 
@@ -17713,7 +17682,7 @@ index 161881b..6621ceb 100644
      }
  
      inline bool wait(CCriticalSection& lock, unsigned long milliseconds) 
-@@ -85,8 +79,11 @@ namespace XbmcThreads
+@@ -76,8 +79,11 @@ namespace XbmcThreads
        ts.tv_nsec += milliseconds % 1000 * 1000000;
        ts.tv_sec  += milliseconds / 1000 + ts.tv_nsec / 1000000000;
        ts.tv_nsec %= 1000000000;
@@ -17751,29 +17720,13 @@ index 43df0c4..1b3b077 100644
      // keep priority in bounds
      int prio = iPriority;
      if (prio >= GetMaxPriority())
-diff --git a/xbmc/utils/TimeUtils.cpp b/xbmc/utils/TimeUtils.cpp
-index 9d0c504..2c8e2de 100644
---- a/xbmc/utils/TimeUtils.cpp
-+++ b/xbmc/utils/TimeUtils.cpp
-@@ -43,7 +43,11 @@ int64_t CurrentHostCounter(void)
-   return( (int64_t)PerformanceCount.QuadPart );
- #else
-   struct timespec now;
-+#ifdef CLOCK_MONOTONIC_RAW
-+  clock_gettime(CLOCK_MONOTONIC_RAW, &now);
-+#else
-   clock_gettime(CLOCK_MONOTONIC, &now);
-+#endif // CLOCK_MONOTONIC_RAW
-   return( ((int64_t)now.tv_sec * 1000000000L) + now.tv_nsec );
- #endif
- }
 -- 
 1.9.5.msysgit.0
 
 
-From 15256cfe1ed6bd0067b2c57e1a0c7fdfd3eb9c24 Mon Sep 17 00:00:00 2001
+From 32696fa7b251b62b49f75312c017733f648952ab Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 12:06:24 +0100
+Date: Thu, 5 Feb 2015 23:59:15 +0100
 Subject: [PATCH 31/40] Update rbp
 
 ---
@@ -17791,10 +17744,10 @@ Subject: [PATCH 31/40] Update rbp
  delete mode 100644 xbmc/cores/omxplayer/DllOMX.h
 
 diff --git a/plex/Utility/PlexJobs.cpp b/plex/Utility/PlexJobs.cpp
-index e745f82..af2c792 100644
+index eff73f8..283144f 100644
 --- a/plex/Utility/PlexJobs.cpp
 +++ b/plex/Utility/PlexJobs.cpp
-@@ -243,7 +243,7 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
+@@ -245,7 +245,7 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
      m_details.height = height;
      m_details.file = m_cachePath + ".jpg";
      if (texture)
@@ -19416,9 +19369,9 @@ index 5246f1f..5408f1f 100644
 1.9.5.msysgit.0
 
 
-From 2855d355fb5a5e4bdc4b56b0018e8a25e961a43c Mon Sep 17 00:00:00 2001
+From f2691ac9e79403600c9fd2be4356c11b274f6e6c Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 12:08:10 +0100
+Date: Fri, 6 Feb 2015 00:06:08 +0100
 Subject: [PATCH 32/40] Sync omxplayer with dvdplayer
 
 ---
@@ -20260,9 +20213,9 @@ index 0f5ce6b..6411104 100644
 1.9.5.msysgit.0
 
 
-From 1c80fea5ee2856ed92a99052775ea2e7d65df3fc Mon Sep 17 00:00:00 2001
+From 536e2085239348c10fb51622ddeba8cd957d8f2e Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 12:10:50 +0100
+Date: Fri, 6 Feb 2015 00:06:56 +0100
 Subject: [PATCH 33/40] Update powermanagement
 
 ---
@@ -21073,9 +21026,9 @@ index c3389c6..0f23d86 100644
 1.9.5.msysgit.0
 
 
-From aed31e7de18eb79f292cb55d4c63355a0f9f3bc4 Mon Sep 17 00:00:00 2001
+From 20e9feaa1a8568d96971cc6db63a657701923330 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 12:11:42 +0100
+Date: Fri, 6 Feb 2015 00:10:46 +0100
 Subject: [PATCH 34/40] Update MathUtils
 
 ---
@@ -21288,9 +21241,9 @@ index c95171f..06b94f9 100644
 1.9.5.msysgit.0
 
 
-From 52a78f552a27df63e0e8036ffb9d55e72f9627f7 Mon Sep 17 00:00:00 2001
+From e647ade01d1633f8c5492d1190bb23e6744038c7 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
-Date: Sat, 7 Feb 2015 12:12:45 +0100
+Date: Fri, 6 Feb 2015 01:31:06 +0100
 Subject: [PATCH 35/40] Add AESinkPi
 
 ---
@@ -21884,7 +21837,7 @@ index 0000000..a3bf893
 +
 +#endif
 diff --git a/xbmc/cores/AudioEngine/Sinks/CMakeLists.txt b/xbmc/cores/AudioEngine/Sinks/CMakeLists.txt
-index 14a81d3..ee32f8f 100644
+index e2ea7d8..a7614a3 100644
 --- a/xbmc/cores/AudioEngine/Sinks/CMakeLists.txt
 +++ b/xbmc/cores/AudioEngine/Sinks/CMakeLists.txt
 @@ -4,6 +4,10 @@ if(DEFINED HAS_ALSA)
@@ -21934,7 +21887,7 @@ index 677a9f1..ccc4e1d 100644
 1.9.5.msysgit.0
 
 
-From 52c27ccdd77b562b528393a3f38e4dc806e3c391 Mon Sep 17 00:00:00 2001
+From afa238920e257a9084c116595672a841de07beb6 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 7 Feb 2015 12:15:42 +0100
 Subject: [PATCH 36/40] Enable menu sounds
@@ -21944,7 +21897,7 @@ Subject: [PATCH 36/40] Enable menu sounds
  1 file changed, 2 deletions(-)
 
 diff --git a/plex/Owned/GUISettings.cpp b/plex/Owned/GUISettings.cpp
-index b536f1b..afbd89a 100644
+index 2bf890c..d65fdaa 100644
 --- a/plex/Owned/GUISettings.cpp
 +++ b/plex/Owned/GUISettings.cpp
 @@ -399,13 +399,11 @@ void CGUISettings::Initialize()
@@ -21965,7 +21918,7 @@ index b536f1b..afbd89a 100644
 1.9.5.msysgit.0
 
 
-From ee002f0925a29196c98edf552e2e59f8c533dcf6 Mon Sep 17 00:00:00 2001
+From 92802fa65a11174a230401717690bc5cf75a4059 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Fri, 6 Feb 2015 21:17:32 +0100
 Subject: [PATCH 37/40] Add fonts and colors for OpenELEC-settings
@@ -22047,7 +22000,7 @@ index 0b61586..dbc1c10 100644
 1.9.5.msysgit.0
 
 
-From ffeb8ec724e89103476e3e1237c4fef89678554c Mon Sep 17 00:00:00 2001
+From 21c417958250fec148cdb079f56f5f81df65dcb6 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 7 Feb 2015 09:44:59 +0100
 Subject: [PATCH 38/40] Do not pause rendering
@@ -22057,10 +22010,10 @@ Subject: [PATCH 38/40] Do not pause rendering
  1 file changed, 7 deletions(-)
 
 diff --git a/plex/GUI/GUIPlexMediaWindow.cpp b/plex/GUI/GUIPlexMediaWindow.cpp
-index 44ba4ca..09958af 100755
+index fcea18e..2630296 100755
 --- a/plex/GUI/GUIPlexMediaWindow.cpp
 +++ b/plex/GUI/GUIPlexMediaWindow.cpp
-@@ -697,10 +697,6 @@ void CGUIPlexMediaWindow::LoadPage(int iPage)
+@@ -701,10 +701,6 @@ void CGUIPlexMediaWindow::LoadPage(int iPage)
    u.SetOption("X-Plex-Container-Start", boost::lexical_cast<std::string>(start));
    u.SetOption("X-Plex-Container-Size", boost::lexical_cast<std::string>(pageSize));
    
@@ -22071,7 +22024,7 @@ index 44ba4ca..09958af 100755
    m_fetchJobs[iPage] = CJobManager::GetInstance().AddJob(new CPlexDirectoryFetchJob(u), this);
  }
  
-@@ -730,9 +726,6 @@ void CGUIPlexMediaWindow::OnJobComplete(unsigned int jobID, bool success, CJob*
+@@ -734,9 +730,6 @@ void CGUIPlexMediaWindow::OnJobComplete(unsigned int jobID, bool success, CJob*
      }
    }
  
@@ -22085,7 +22038,7 @@ index 44ba4ca..09958af 100755
 1.9.5.msysgit.0
 
 
-From a466dd24291198903a0906c3851b4d28e2d9ee1a Mon Sep 17 00:00:00 2001
+From 1f1ec11ff124763a13cd9c7d2b12f3f92593c49c Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 8 Feb 2015 14:03:49 +0100
 Subject: [PATCH 39/40] Disable use of omximage to cache textures
@@ -22095,10 +22048,10 @@ Subject: [PATCH 39/40] Disable use of omximage to cache textures
  1 file changed, 4 insertions(+), 13 deletions(-)
 
 diff --git a/plex/Utility/PlexJobs.cpp b/plex/Utility/PlexJobs.cpp
-index af2c792..5123788 100644
+index 283144f..8dde651 100644
 --- a/plex/Utility/PlexJobs.cpp
 +++ b/plex/Utility/PlexJobs.cpp
-@@ -236,19 +236,6 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
+@@ -238,19 +238,6 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
    else if (m_details.hash == m_oldHash)
      return true;
  
@@ -22115,10 +22068,10 @@ index af2c792..5123788 100644
 -  }
 -#endif
 -
-   int bytesRead, bufferSize = 131072;
-   unsigned char buffer[131072];
+   unsigned char buffer[TEXTURE_CACHE_BUFFER_SIZE];
    bool outputFileOpenned = false;
-@@ -285,6 +272,10 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
+ 
+@@ -311,6 +298,10 @@ bool CPlexTextureCacheJob::CacheTexture(CBaseTexture **texture)
      m_outputFile.Flush();
      m_inputFile.Close();
      m_outputFile.Close();
@@ -22133,7 +22086,7 @@ index af2c792..5123788 100644
 1.9.5.msysgit.0
 
 
-From dfe5e57c0f4eb6bf6de6037f7e1b03a7f5507af7 Mon Sep 17 00:00:00 2001
+From a99cf7c6953b2c908a5d82ce0534989b7be4b121 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Mon, 9 Feb 2015 07:46:16 +0100
 Subject: [PATCH 40/40] Use plex texture cache
