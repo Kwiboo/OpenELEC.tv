@@ -1,0 +1,14 @@
+[Unit]
+Description=Hyperion daemon
+ConditionPathExists=/storage/.cache/services/hyperion.conf
+Before=kodi.service
+After=graphical.target hyperion-defaults.service
+Requires=hyperion-defaults.service
+
+[Service]
+ExecStartPre=/sbin/modprobe stk1160
+ExecStart=/usr/bin/hyperiond /storage/.config/hyperion.config.json
+ExecStopPost=/sbin/modprobe -r stk1160
+
+[Install]
+WantedBy=kodi.service
