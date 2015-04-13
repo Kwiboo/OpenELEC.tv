@@ -44,4 +44,5 @@ if [ "$MEDIACENTER" = "kodi" ]; then
 
 # other packages
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET OpenELEC-settings"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET hyperion"
 fi
