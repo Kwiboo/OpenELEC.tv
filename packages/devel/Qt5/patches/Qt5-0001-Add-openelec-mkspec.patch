@@ -1,0 +1,73 @@
+diff --git a/qtbase/configure b/qtbase/configure
+index 5ad29bb..35c97a6 100755
+--- a/qtbase/configure
++++ b/qtbase/configure
+@@ -434,7 +434,8 @@ DeviceVar()
+             ;;
+     esac
+ 
+-    echo "$2" "$eq" "$3" >> "$DEVICE_VARS_FILE"
++    eval val="$3"
++    echo "$2" "$eq" "$val" >> "$DEVICE_VARS_FILE"
+ }
+ 
+ resolveDeviceMkspec()
+diff --git a/qtbase/mkspecs/devices/linux-openelec-g++/qmake.conf b/qtbase/mkspecs/devices/linux-openelec-g++/qmake.conf
+new file mode 100644
+index 0000000..f06c737
+--- /dev/null
++++ b/qtbase/mkspecs/devices/linux-openelec-g++/qmake.conf
+@@ -0,0 +1,13 @@
++#
++# qmake configuration for linux-openelec-g++
++#
++
++include(../common/linux_device_pre.conf)
++
++QMAKE_CFLAGS    = $${TARGET_CFLAGS}
++QMAKE_CXXFLAGS  = $${TARGET_CXXFLAGS}
++QMAKE_LFLAGS    = $${TARGET_LDFLAGS}
++
++include(../common/linux_device_post.conf)
++
++load(qt_config)
+diff --git a/qtbase/mkspecs/devices/linux-openelec-g++/qplatformdefs.h b/qtbase/mkspecs/devices/linux-openelec-g++/qplatformdefs.h
+new file mode 100644
+index 0000000..3e73e78
+--- /dev/null
++++ b/qtbase/mkspecs/devices/linux-openelec-g++/qplatformdefs.h
+@@ -0,0 +1,34 @@
++/****************************************************************************
++**
++** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
++** Contact: http://www.qt-project.org/legal
++**
++** This file is part of the qmake spec of the Qt Toolkit.
++**
++** $QT_BEGIN_LICENSE:LGPL21$
++** Commercial License Usage
++** Licensees holding valid commercial Qt licenses may use this file in
++** accordance with the commercial license agreement provided with the
++** Software or, alternatively, in accordance with the terms contained in
++** a written agreement between you and Digia. For licensing terms and
++** conditions see http://qt.digia.com/licensing. For further information
++** use the contact form at http://qt.digia.com/contact-us.
++**
++** GNU Lesser General Public License Usage
++** Alternatively, this file may be used under the terms of the GNU Lesser
++** General Public License version 2.1 or version 3 as published by the Free
++** Software Foundation and appearing in the file LICENSE.LGPLv21 and
++** LICENSE.LGPLv3 included in the packaging of this file. Please review the
++** following information to ensure the GNU Lesser General Public License
++** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
++** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
++**
++** In addition, as a special exception, Digia gives you certain additional
++** rights. These rights are described in the Digia Qt LGPL Exception
++** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
++**
++** $QT_END_LICENSE$
++**
++****************************************************************************/
++
++#include "../../linux-g++/qplatformdefs.h"
